@@ -1,0 +1,72 @@
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+header {
+  background-color: #004080;
+  color: white;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 1rem;
+}
+
+/* Requisito: Limitar el ancho del contenido principal */
+main {
+  max-width: 840px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: white;
+  text-align: center;
+}
+
+/* Requisito: Foto de perfil a 150px */
+main img {
+  width: 150px;
+  height: auto;
+  border-radius: 50%;
+}
+
+/* Requisito: Estilos específicos para el aside */
+aside {
+  width: 20rem;
+  margin: 1rem auto; /* Centrado */
+  border: 1px solid rgb(0 0 0 / 0.2); 
+  padding: 1rem;
+  background-color: #eee;
+  color: #333;
+  text-align: center;
+}
+
+/* Requisito: Imagen del aside a 200px */
+aside img {
+  width: 200px;
+  height: auto;
+}
+
+/* Requisito: Padding de párrafos en 0 */
+p {
+  padding: 0;
+}
+
+/* Requisito: Estilo del footer con separación */
+footer {
+  margin-top: 15px;
+  border-top: 1px solid #000;
+  text-align: center;
+  padding: 1rem;
+  background-color: #004080;
+  color: white;
+}
+
