@@ -1,0 +1,85 @@
+/* 1. Variables de diseño */
+:root {
+  --primary-color: #055a05;
+  --secondary-color: #f4a261;
+  --accent1-color: #264653;
+  --accent2-color: #e9c46a;
+  --heading-font: "Times New Roman", serif;
+  --body-font: Arial, sans-serif;
+}
+
+/* 2. Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--body-font);
+  color: var(--accent1-color);
+}
+
+/* 3. Layout de 840px (Requisito de la tarea) */
+header, main, footer {
+  width: 840px;
+  margin: 0 auto;
+}
+
+h1, h2 {
+  font-family: var(--heading-font);
+  color: var(--primary-color);
+}
+
+nav, p, section, article {
+  margin: 16px;
+  padding: 8px;
+}
+
+/* 4. Estilo del Menú (Opcional para que no se vea feo) */
+nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+}
+
+/* 5. Estilo del HERO (Posicionamiento Absoluto) */
+.hero {
+  position: relative;
+}
+
+.hero img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+h1 {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  padding: 16px;
+  text-align: center;
+  opacity: 0.8;
+  background-color: var(--accent1-color);
+  color: #ffffff;
+}
+
+/* 6. Imagen flotante en el artículo */
+.hero article img {
+  float: right;
+  width: 150px;
+  margin-left: 15px;
+  border-radius: 8px;
+}
+
+/* 7. Footer y Redes Sociales */
+.socialmedia {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.socialmedia img {
+    width: 30px;
+    margin: 5px;
+}
