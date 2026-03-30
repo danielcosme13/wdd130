@@ -1,13 +1,13 @@
-/* 1. Variables y Reset */
+/* 1. Variables de Marca - Estilo SenixArt */
 :root {
-  --primary-color: #055a05;
-  --secondary-color: #f4a261;
-  --accent1-color: #264653;
-  --accent2-color: #e9c46a;
-  --heading-font: "Times New Roman", serif;
-  --body-font: Arial, sans-serif;
+  --primary: #055a05;
+  --bg-header: #f0f0f0; /* Un gris muy claro (Gainsboro) para contraste */
+  --text-dark: #264653;
+  --accent: #f4a261;
+  --width-max: 840px;
 }
 
+/* 2. Reset y Base */
 * {
   margin: 0;
   padding: 0;
@@ -15,76 +15,111 @@
 }
 
 body {
-  font-family: var(--body-font);
-  color: var(--accent1-color);
+  font-family: 'Segoe UI', Arial, sans-serif;
   line-height: 1.6;
+  color: var(--text-dark);
+  background-color: #fff;
 }
 
-/* 2. Layout Principal (Ancho 840px para la tarea) */
+/* Contenedor Centrado para todo */
 header, main, footer {
-  max-width: 840px;
+  max-width: var(--width-max);
   margin: 0 auto;
+  padding: 0 20px; /* Esto evita que el texto pegue a los bordes */
 }
 
-/* 3. REQUISITO: Header con CSS Grid */
+/* 3. HEADER: Uso obligatorio de GRID */
 header {
   display: grid;
-  grid-template-columns: 120px 1fr; /* Logo y Nav */
+  grid-template-columns: 120px 1fr; /* Columna fija para logo, flexible para nav */
   align-items: center;
-  padding: 10px 0;
+  background-color: var(--bg-header);
+  padding: 15px 20px;
+  border-bottom: 2px solid var(--primary);
 }
 
-.logo {
-  width: 100px;
+header img {
+  max-height: 70px; /* Esto evita que el logo se coma la pantalla */
+  width: auto;
 }
 
-/* 4. REQUISITO: Nav con CSS Flex */
+/* 4. NAV: Uso obligatorio de FLEX */
 nav ul {
   display: flex;
   list-style: none;
-  justify-content: space-around;
+  justify-content: flex-end; /* Alinea los links a la derecha */
+  gap: 25px; /* Espacio elegante entre links */
 }
 
 nav a {
   text-decoration: none;
-  color: var(--primary-color);
-  font-weight: bold;
+  color: var(--text-dark);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  transition: color 0.3s;
 }
 
-/* 5. Hero y Posicionamiento */
+nav a:hover {
+  color: var(--primary);
+}
+
+/* 5. HERO SECTION */
 .hero {
   position: relative;
-  margin-bottom: 20px;
+  background-color: #000; /* Fondo negro para el impacto visual */
+  overflow: hidden;
+}
+
+.hero img {
+  width: 100%;
+  display: block;
+  opacity: 0.6; /* Oscurece la imagen para que el texto resalte */
 }
 
 .hero h1 {
   position: absolute;
-  top: 20px;
-  width: 100%;
-  background-color: rgba(38, 70, 83, 0.8);
-  color: white;
-  text-align: center;
-  padding: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 3.5rem;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
 }
 
+/* Estilo del artículo flotante en el Hero */
 .hero article {
-  padding: 20px;
-  background: #f4f4f4;
+  background: white;
+  padding: 30px;
+  margin: -40px 40px 40px 40px; /* Lo sube un poco sobre el hero */
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  border-radius: 4px;
 }
 
 .msg-img {
   float: right;
-  width: 150px;
-  margin-left: 15px;
-  border-radius: 8px;
+  width: 120px;
+  margin-left: 20px;
+  border-radius: 50%; /* Imagen circular para diseño más moderno */
 }
 
-/* 6. REQUISITO: Sección de 5 imágenes horizontales */
+/* 6. ADVENTURES: Los 5 Estilos (FLEX) */
+.adventures {
+  padding: 50px 0;
+}
+
+.adventures h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--primary);
+}
+
 .adventures-container {
   display: flex;
   justify-content: space-between;
-  gap: 10px;
-  margin: 20px 0;
+  gap: 15px;
 }
 
 .adventures-container figure {
@@ -94,25 +129,39 @@ nav a {
 
 .adventures-container img {
   width: 100%;
-  height: auto;
-  border-radius: 5px;
+  height: 120px; /* Altura fija para uniformidad */
+  object-fit: cover; /* Recorta la imagen sin deformarla */
+  border-radius: 8px;
+  border: 1px solid #ddd;
 }
 
-/* 7. REQUISITO: Footer con iconos a la derecha */
+.adventures-container figcaption {
+  font-size: 0.8rem;
+  margin-top: 8px;
+  font-weight: bold;
+}
+
+/* 7. FOOTER: Iconos a la derecha */
 footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
-  border-top: 1px solid #ccc;
+  padding: 30px 20px;
+  margin-top: 40px;
+  border-top: 1px solid #eee;
+  font-size: 0.8rem;
 }
 
 .socialmedia {
   display: flex;
-  justify-content: flex-end;
+  gap: 15px;
 }
 
 .socialmedia img {
-  width: 25px;
-  margin-left: 10px;
+  width: 22px;
+  filter: grayscale(100%);
+  transition: 0.3s;
 }
+
+.socialmedia img:hover {
+  filter
