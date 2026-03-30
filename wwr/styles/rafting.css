@@ -1,4 +1,4 @@
-/* 1. Variables de diseño */
+/* 1. Variables y Reset */
 :root {
   --primary-color: #055a05;
   --secondary-color: #f4a261;
@@ -8,7 +8,6 @@
   --body-font: Arial, sans-serif;
 }
 
-/* 2. Reset básico */
 * {
   margin: 0;
   padding: 0;
@@ -18,68 +17,102 @@
 body {
   font-family: var(--body-font);
   color: var(--accent1-color);
+  line-height: 1.6;
 }
 
-/* 3. Layout de 840px (Requisito de la tarea) */
+/* 2. Layout Principal (Ancho 840px para la tarea) */
 header, main, footer {
-  width: 840px;
+  max-width: 840px;
   margin: 0 auto;
 }
 
-h1, h2 {
-  font-family: var(--heading-font);
-  color: var(--primary-color);
+/* 3. REQUISITO: Header con CSS Grid */
+header {
+  display: grid;
+  grid-template-columns: 120px 1fr; /* Logo y Nav */
+  align-items: center;
+  padding: 10px 0;
 }
 
-nav, p, section, article {
-  margin: 16px;
-  padding: 8px;
+.logo {
+  width: 100px;
 }
 
-/* 4. Estilo del Menú (Opcional para que no se vea feo) */
+/* 4. REQUISITO: Nav con CSS Flex */
 nav ul {
-    display: flex;
-    list-style: none;
-    justify-content: space-around;
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
 }
 
-/* 5. Estilo del HERO (Posicionamiento Absoluto) */
+nav a {
+  text-decoration: none;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+/* 5. Hero y Posicionamiento */
 .hero {
   position: relative;
+  margin-bottom: 20px;
 }
 
-.hero img {
-    display: block;
-    width: 100%;
-    height: auto;
-}
-
-h1 {
+.hero h1 {
   position: absolute;
   top: 20px;
   width: 100%;
-  padding: 16px;
+  background-color: rgba(38, 70, 83, 0.8);
+  color: white;
   text-align: center;
-  opacity: 0.8;
-  background-color: var(--accent1-color);
-  color: #ffffff;
+  padding: 10px;
 }
 
-/* 6. Imagen flotante en el artículo */
-.hero article img {
+.hero article {
+  padding: 20px;
+  background: #f4f4f4;
+}
+
+.msg-img {
   float: right;
   width: 150px;
   margin-left: 15px;
   border-radius: 8px;
 }
 
-/* 7. Footer y Redes Sociales */
+/* 6. REQUISITO: Sección de 5 imágenes horizontales */
+.adventures-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.adventures-container figure {
+  flex: 1;
+  text-align: center;
+}
+
+.adventures-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+/* 7. REQUISITO: Footer con iconos a la derecha */
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-top: 1px solid #ccc;
+}
+
 .socialmedia {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .socialmedia img {
-    width: 30px;
-    margin: 5px;
+  width: 25px;
+  margin-left: 10px;
 }
