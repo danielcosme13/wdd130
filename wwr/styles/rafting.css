@@ -1,168 +1,87 @@
-/* 1. Variables de Marca - Estilo SenixArt */
+/* 1. Variables y Reset (Asegura estas variables para el contraste) */
 :root {
-  --primary: #055a05;
-  --bg-header: #f0f0f0; /* Un gris muy claro (Gainsboro) para contraste */
-  --text-dark: #264653;
-  --accent: #f4a261;
-  --width-max: 840px;
-}
-
-/* 2. Reset y Base */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  --primary: #055a05; /* El verde que ya tenías */
+  --text-dark: #264653; /* Azul oscuro elegante para el texto */
+  --bg-light: #f9f9f9; /* Gris muy claro para fondos de secciones */
 }
 
 body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  line-height: 1.6;
+  font-family: Arial, sans-serif;
   color: var(--text-dark);
-  background-color: #fff;
+  line-height: 1.6;
 }
 
-/* Contenedor Centrado para todo */
-header, main, footer {
-  max-width: var(--width-max);
-  margin: 0 auto;
-  padding: 0 20px; /* Esto evita que el texto pegue a los bordes */
-}
-
-/* 3. HEADER: Uso obligatorio de GRID */
-header {
-  display: grid;
-  grid-template-columns: 120px 1fr; /* Columna fija para logo, flexible para nav */
-  align-items: center;
-  background-color: var(--bg-header);
-  padding: 15px 20px;
-  border-bottom: 2px solid var(--primary);
-}
-
+/* 2. Control de Tamaño del Header (Punto extra de uniformidad) */
 header img {
-  max-height: 70px; /* Esto evita que el logo se coma la pantalla */
+  max-height: 60px; /* Evita que el logo sea invasivo */
   width: auto;
 }
 
-/* 4. NAV: Uso obligatorio de FLEX */
-nav ul {
-  display: flex;
-  list-style: none;
-  justify-content: flex-end; /* Alinea los links a la derecha */
-  gap: 25px; /* Espacio elegante entre links */
-}
-
-nav a {
-  text-decoration: none;
-  color: var(--text-dark);
-  font-weight: 600;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  transition: color 0.3s;
-}
-
-nav a:hover {
-  color: var(--primary);
-}
-
-/* 5. HERO SECTION */
-.hero {
-  position: relative;
-  background-color: #000; /* Fondo negro para el impacto visual */
-  overflow: hidden;
-}
-
-.hero img {
-  width: 100%;
-  display: block;
-  opacity: 0.6; /* Oscurece la imagen para que el texto resalte */
-}
-
-.hero h1 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #fff;
-  font-size: 3.5rem;
-  text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-}
-
-/* Estilo del artículo flotante en el Hero */
+/* -----------------------------------------------------------
+   EL ARREGLO PARA LA FOTO GIGANTE (Target: .hero article img)
+   ----------------------------------------------------------- */
 .hero article {
-  background: white;
+  display: block; /* Asegura flujo normal */
+  background: var(--bg-light);
   padding: 30px;
-  margin: -40px 40px 40px 40px; /* Lo sube un poco sobre el hero */
+  margin-top: -30px; /* Detalle de diseño: lo sube un poco */
   position: relative;
-  z-index: 10;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  border-radius: 4px;
+  z-index: 5;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* Sombra suave para profesionalismo */
 }
 
-.msg-img {
-  float: right;
-  width: 120px;
-  margin-left: 20px;
-  border-radius: 50%; /* Imagen circular para diseño más moderno */
+/* Esta es la regla crítica para tu problema */
+.hero article img {
+  float: right; /* REQUISITO: La imagen flota a la derecha del texto */
+  width: 180px; /* Tamaño controlado y profesional */
+  height: 180px;
+  object-fit: cover; /* Mantiene la proporción sin deformar */
+  margin-left: 20px; /* Espacio elegante entre imagen y texto */
+  margin-bottom: 10px;
+  border-radius: 50%; /* Opcional: Imagen circular para un look más moderno */
+  border: 2px solid #ddd;
 }
 
-/* 6. ADVENTURES: Los 5 Estilos (FLEX) */
-.adventures {
-  padding: 50px 0;
+/* Asegura que el contenedor del artículo maneje el float */
+.hero article::after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
+/* -----------------------------------------------------------
+   ARREGLO PARA LOS 5 ESTILOS (Que están rotos/verticales)
+   ----------------------------------------------------------- */
 .adventures h2 {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   color: var(--primary);
 }
 
+/* Requisito W04: Flexbox para diseño horizontal uniforme */
 .adventures-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around; /* Distribución elegante */
   gap: 15px;
+  margin-top: 30px;
 }
 
 .adventures-container figure {
-  flex: 1;
+  flex: 1; /* Todas las figuras miden lo mismo */
   text-align: center;
+  margin: 0;
 }
 
 .adventures-container img {
-  width: 100%;
-  height: 120px; /* Altura fija para uniformidad */
-  object-fit: cover; /* Recorta la imagen sin deformarla */
-  border-radius: 8px;
-  border: 1px solid #ddd;
+  width: 100%; /* Ocupa el ancho de su columna */
+  height: 100px; /* Altura uniforme para orden visual */
+  object-fit: cover; /* Recorta profesionalmente */
+  border-radius: 5px;
 }
 
 .adventures-container figcaption {
   font-size: 0.8rem;
   margin-top: 8px;
   font-weight: bold;
-}
-
-/* 7. FOOTER: Iconos a la derecha */
-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 30px 20px;
-  margin-top: 40px;
-  border-top: 1px solid #eee;
-  font-size: 0.8rem;
-}
-
-.socialmedia {
-  display: flex;
-  gap: 15px;
-}
-
-.socialmedia img {
-  width: 22px;
-  filter: grayscale(100%);
-  transition: 0.3s;
-}
-
-.socialmedia img:hover {
-  filter: grayscale(0%);
 }
