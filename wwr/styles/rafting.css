@@ -1,87 +1,165 @@
-/* 1. Variables y Reset (Asegura estas variables para el contraste) */
+/* 1. Variables de Marca - Estilo SenixArt */
 :root {
-  --primary: #055a05; /* El verde que ya tenías */
-  --text-dark: #264653; /* Azul oscuro elegante para el texto */
-  --bg-light: #f9f9f9; /* Gris muy claro para fondos de secciones */
+  --primary: #055a05;
+  --bg-header: #f0f0f0; 
+  --text-dark: #264653;
+  --accent: #f4a261;
+  --width-max: 840px; /* Requisito W04 */
+}
+
+/* 2. Reset y Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  color: var(--text-dark);
+  font-family: 'Segoe UI', Arial, sans-serif;
   line-height: 1.6;
+  color: var(--text-dark);
+  background-color: #fff;
 }
 
-/* 2. Control de Tamaño del Header (Punto extra de uniformidad) */
+/* Contenedor Centrado para todo */
+header, main, footer {
+  max-width: var(--width-max);
+  margin: 0 auto;
+  padding: 0 20px; 
+}
+
+/* 3. HEADER: Uso obligatorio de GRID */
+header {
+  display: grid;
+  grid-template-columns: 150px 1fr; /* Espacio definido para el logo */
+  align-items: center;
+  background-color: var(--bg-header);
+  padding: 10px 20px;
+  border-bottom: 2px solid var(--primary);
+}
+
 header img {
-  max-height: 60px; /* Evita que el logo sea invasivo */
+  max-height: 70px; 
   width: auto;
 }
 
-/* -----------------------------------------------------------
-   EL ARREGLO PARA LA FOTO GIGANTE (Target: .hero article img)
-   ----------------------------------------------------------- */
-.hero article {
-  display: block; /* Asegura flujo normal */
-  background: var(--bg-light);
-  padding: 30px;
-  margin-top: -30px; /* Detalle de diseño: lo sube un poco */
+/* 4. NAV: Uso obligatorio de FLEX */
+nav ul {
+  display: flex;
+  list-style: none;
+  justify-content: flex-end; 
+  gap: 20px; 
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: var(--primary);
+}
+
+/* 5. HERO SECTION */
+.hero {
   position: relative;
-  z-index: 5;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* Sombra suave para profesionalismo */
+  background-color: #000; 
 }
 
-/* Esta es la regla crítica para tu problema */
-.hero article img {
-  float: right; /* REQUISITO: La imagen flota a la derecha del texto */
-  width: 180px; /* Tamaño controlado y profesional */
-  height: 180px;
-  object-fit: cover; /* Mantiene la proporción sin deformar */
-  margin-left: 20px; /* Espacio elegante entre imagen y texto */
+.hero img {
+  width: 100%;
+  display: block;
+  opacity: 0.7; /* Mejor contraste para el h1 */
+}
+
+.hero h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 3rem;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+}
+
+/* ARREGLO DE LA FOTO GIGANTE: Estilo del artículo flotante */
+.hero article {
+  background: white;
+  padding: 25px;
+  margin: -30px 30px 30px 30px; /* Lo sube sobre el hero */
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  overflow: auto; /* IMPORTANTE: Mantiene el contenido dentro si hay flotantes */
+}
+
+/* Clase específica para la imagen de "Vetiver" */
+.msg-img {
+  float: right; 
+  width: 160px; /* Tamaño controlado para que no sea gigante */
+  height: auto;
+  margin-left: 20px;
   margin-bottom: 10px;
-  border-radius: 50%; /* Opcional: Imagen circular para un look más moderno */
-  border: 2px solid #ddd;
+  border-radius: 8px; /* Diseño cuadrado limpio como tu estética flat */
+  border: 1px solid #eee;
 }
 
-/* Asegura que el contenedor del artículo maneje el float */
-.hero article::after {
-  content: "";
-  display: table;
-  clear: both;
+/* 6. ADVENTURES: Los 5 Estilos (FLEX HORIZONTAL) */
+.adventures {
+  padding: 40px 0;
 }
 
-/* -----------------------------------------------------------
-   ARREGLO PARA LOS 5 ESTILOS (Que están rotos/verticales)
-   ----------------------------------------------------------- */
 .adventures h2 {
   text-align: center;
   margin-bottom: 25px;
   color: var(--primary);
 }
 
-/* Requisito W04: Flexbox para diseño horizontal uniforme */
 .adventures-container {
   display: flex;
-  justify-content: space-around; /* Distribución elegante */
-  gap: 15px;
-  margin-top: 30px;
+  justify-content: space-between;
+  gap: 10px;
 }
 
 .adventures-container figure {
-  flex: 1; /* Todas las figuras miden lo mismo */
+  flex: 1;
   text-align: center;
   margin: 0;
 }
 
 .adventures-container img {
-  width: 100%; /* Ocupa el ancho de su columna */
-  height: 100px; /* Altura uniforme para orden visual */
-  object-fit: cover; /* Recorta profesionalmente */
-  border-radius: 5px;
+  width: 100%;
+  height: 110px; /* Altura uniforme para orden visual */
+  object-fit: cover; 
+  border-radius: 4px;
 }
 
 .adventures-container figcaption {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   margin-top: 8px;
   font-weight: bold;
+}
+
+/* 7. FOOTER: Iconos a la derecha */
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  margin-top: 30px;
+  border-top: 1px solid #eee;
+}
+
+.socialmedia {
+  display: flex;
+  gap: 12px;
+}
+
+.socialmedia img {
+  width: 24px;
+  transition: 0.3s;
 }
